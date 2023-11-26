@@ -67,10 +67,6 @@ function App() {
  
 
 
-  
-
-
-
   const postTabPage = async(data) =>{
     const Data = await axios.post("/api/tab_select",data);
     if (Data.status === 200) {
@@ -101,11 +97,10 @@ function App() {
       <body>
         <div className='black-cover'>
           <NavBar />
-          
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='execute' element={<Execute />} />
+            <Route path='/execute' element={<Execute />} />
           </Routes>
         </div>
         
