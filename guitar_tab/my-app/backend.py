@@ -7,7 +7,7 @@ import time
 from PIL import Image,ImageDraw,ImageFont
 import matplotlib.pyplot as plt
 import base64
-from flask_socketio import SocketIO
+# from flask_socketio import SocketIO
 import os
 
 
