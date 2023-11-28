@@ -34,6 +34,7 @@ export default function Home(){
                         <p>如果你是一位對音樂充滿熱情的樂迷，卻總是為找不到喜愛樂曲的樂譜而感到沮喪，我們的網站就是為你設計的。只需一個 Youtube 影片網址，即可輕鬆獲得你最愛歌曲的完整 Tab 譜。</p>
                     </div>
                 </div>
+                <hr/>
                 <div data-aos="fade-left"  className="i-2">
                     <div className='i-img'>
                         <img src={image2}/>
@@ -43,15 +44,17 @@ export default function Home(){
                         <p>一個擁有智慧辨識技術的平台。使用者只需複製並貼上 Youtube 影片網址（須含吉他譜），系統就能夠智慧辨識其中的 Tab 譜，將你所愛的音樂完整呈現在你面前。</p>
                     </div>
                 </div>
+                <hr/>
                 <div data-aos="fade-right"  className="i-1">
                     <div className='i-img'>
                         <img src={image3}/>
                     </div>
                     <div className='i-data'>
-                        <h2>隨時隨地享受音樂的現代人</h2>
+                        <h2>隨時隨地享受音樂的人</h2>
                         <p>如果你是一位現代生活忙碌，卻仍然想隨時隨地享受音樂的人，我們的多平台支援確保你在任何時間、任何地點都能夠輕鬆進入音樂的世界，無縫切換平台，無縫享受音樂。</p>
                     </div>
                 </div>
+                <hr/>
                 <div data-aos="fade-left"  className="i-2">
                     <div className='i-img'>
                         <img src={image4}/>
@@ -63,9 +66,9 @@ export default function Home(){
                 </div>
             </div>
             <div data-aos="fade-up" className="right-now">
-                <h2>弦外之音，一指成樂。即刻體驗GuiTab的奇蹟！</h2>
-
-                    <Link to="execute" >
+                <h2>弦外之音，一指成樂</h2>
+                <h2>即刻體驗GuiTab的奇蹟</h2>
+                    <Link to="execute" className='link-to-execute' >
                         <ParticleButton/>
                     </Link>
   
