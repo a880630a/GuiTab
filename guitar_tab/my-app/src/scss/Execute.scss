@@ -13,11 +13,16 @@
     background-size: cover;
     justify-content: center;
     align-items: center;
+    &.tab-select{
+        color: yellow;
+        height: auto;
+    }
     .data-area{
+        color:#edf2f0;
         width:80%;
         // height: 80%;
         border-radius: 2rem;
-        background-color: rgba(10, 1, 1,0.5);
+        background-color: rgba(10, 1, 1,0.7);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -34,7 +39,18 @@
         .after-url{
             display: flex;
             flex-direction: column;
+            color:#edf2f0;
+        }
+        .image-display{
+            width: 100%;
+            min-width: 720px;
+            
         }
     }
 
 }
+// .fit-canvas{
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+// }
