@@ -72,13 +72,19 @@ export default function Execute() {
 
   const postTabPage = async(data) =>{
     const Data = await axios.post("/api/tab_select",data);
-    if (Data.status === 200) {
-      console.log("tab selected");
-      for (let i = 0; i < (Data.data).length; i++){
-        const fullBase64ToImage = `data:image/jpeg;base64,${Data.data[i]}`;
-        setFullTab(oldArray => [...oldArray, fullBase64ToImage]);
+    try{
+      if (Data.status === 200) {
+        console.log("tab selected");
+        for (let i = 0; i < (Data.data).length; i++){
+          const fullBase64ToImage = `data:image/jpeg;base64,${Data.data[i]}`;
+          setFullTab(oldArray => [...oldArray, fullBase64ToImage]);
+        }
       }
+    }catch(error){
+      console.log("asdfg")
     }
+    
+   
   };
   // useEffect(() => { #websocket
   //   const socket = io('http://0.0.0.0:8877');  // 连接到后端的 WebSocket 服务器地址
@@ -98,7 +104,8 @@ export default function Execute() {
 
  
   return (
-        <div className="main-page-2">
+        // <div className="main-page-2">
+        <div className={`main-page-2 ${tabImageUrl.length !== 0 ? "tab-select":""}`}>
           {isLoading ? <BackgroundModal isLoading={isLoading}/> : ""}
         {/* <div className={`main-page ${isLoading ? "loading":""}`}> */}
           <div className="data-area">
@@ -116,7 +123,10 @@ export default function Execute() {
                     <p>Youtube name</p>
                     <div className="form-outline">
                     <h1>{ytTitle}</h1>
-                    <h2>請框取吉他譜的區域</h2>
+                    <div className='text-space'>
+                      {tabImageUrl.length !==0 ? <h2>勾選需要的TAB</h2>:<h2>請框取吉他譜的區域</h2>}
+                    </div>
+                    
                     </div>
                 </div>
             )}
@@ -124,7 +134,7 @@ export default function Execute() {
               
             </div>
 
-              {ytImageUrl ? 
+              {ytImageUrl && tabImageUrl.length === 0? 
               <div className="image-display">
                 <CanvasWithBackground imageUrl = {ytImageUrl} rectangle={rectangle} setRectangle={setRectangle}> 
                 </CanvasWithBackground>
