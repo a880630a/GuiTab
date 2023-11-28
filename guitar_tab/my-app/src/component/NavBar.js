@@ -8,7 +8,7 @@ export default function NavBar(props){
     return(
         <nav className="nav-bar">
             <div className="logo-img">
-                <img src={brandImg}/>
+                <img src={brandImg} alt='brand'/>
             </div>
             <div className="brand-title">GuiTab</div>
             <div className="link-area">
