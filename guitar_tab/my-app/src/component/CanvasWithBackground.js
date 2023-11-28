@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import '../scss/Execute.scss'
 
 function CanvasWithBackground(props) {
   const {imageUrl,rectangle,setRectangle} = props;
@@ -100,7 +101,7 @@ function CanvasWithBackground(props) {
   },[goalPosition,isDrawing,cursorPosition]);
 
   return (
-    <canvas ref={setCanvas} onMouseDown={Clickdown} onMouseUp={ClickUp} onMouseMove={CursorMove} style={{zIndex:99}}></canvas>
+    <canvas className='fit-canvas' ref={setCanvas} onMouseDown={Clickdown} onMouseUp={ClickUp} onMouseMove={CursorMove} style={{zIndex:99}}></canvas>
   );
 }
 
