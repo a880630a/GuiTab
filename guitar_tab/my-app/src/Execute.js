@@ -108,24 +108,29 @@ export default function Execute() {
         <div className={`main-page-2 ${tabImageUrl.length !== 0 ? "tab-select":""}`}>
           {isLoading ? <BackgroundModal isLoading={isLoading}/> : ""}
         {/* <div className={`main-page ${isLoading ? "loading":""}`}> */}
-          <div className="data-area">
+          {/* <div className="data-area"> */}
+          <div className={`data-area ${ytTitle.length === 0 ? "before-url" : "after-url"}`}>
             <div className="data-URL">
             {ytTitle.length === 0 ? (
-                <>
-                    <p>Youtube URL </p>
+                <div className='before-url'>
+                    <h1>step 1.</h1>
+                    <hr/>
+                    <p>請輸入要查詢的影片網址</p>
                     <div className="form-outline">
-                    <input type="url" id="typeURL" className="form-control" onChange={(event) => { setYtUrl(event.target.value) }} />
-                    <button className="btn btn-primary" type="submit" onClick={() => urlUpdate(ytUrl)}>Button</button>
+                    <input type="url" id="typeURL" placeholder="Youtube URL" className="form-control" onChange={(event) => { setYtUrl(event.target.value) }} />
+                    <button className="url-btn btn btn-primary " type="submit" onClick={() => urlUpdate(ytUrl)}>執行</button>
                     </div>
-                </>
+                </div>
                 ) : (
                 <div className='after-url'>
-                    <p>Youtube name</p>
-                    <div className="form-outline">
-                    <h1>{ytTitle}</h1>
+                    {tabImageUrl.length !==0 ? <h1>step 3.</h1>:<h1>step 2.</h1>}
+                    <hr/>
                     <div className='text-space'>
-                      {tabImageUrl.length !==0 ? <h2>勾選需要的TAB</h2>:<h2>請框取吉他譜的區域</h2>}
+                      {tabImageUrl.length !==0 ? <p>勾選需要的吉他譜 TAB</p>:<p>請框取吉他譜的區域</p>}
                     </div>
+                    <div className="form-outline">
+                    <h3>{ytTitle}</h3>
+                    
                     
                     </div>
                 </div>
@@ -138,7 +143,7 @@ export default function Execute() {
               <div className="image-display">
                 <CanvasWithBackground imageUrl = {ytImageUrl} rectangle={rectangle} setRectangle={setRectangle}> 
                 </CanvasWithBackground>
-                <button class="btn btn-primary" type="submit" onClick={()=>postImageArea(rectangle)}>Button2</button>
+                <button class="btn btn-primary" type="submit" onClick={()=>postImageArea(rectangle)}>確認</button>
               </div>
               :
               ""
@@ -157,11 +162,12 @@ export default function Execute() {
                       {/*遍歷數組（或類似數據結構）的每個元素，並返回滿足特定條件的元素所組成的新數組*/}
                     </input>
                     <img src={tabImageUrl[index]} alt="Image1" />
+                    
                   </div>
                   
                 ))}
-                <button onClick={()=>postTabPage(tabPage)}>confirm</button>
-                </div>
+                <button class="btn btn-primary" type="submit" onClick={()=>postTabPage(tabPage)}>確認</button>
+              </div>
               :
               ""
               }
@@ -172,7 +178,7 @@ export default function Execute() {
                 {fullTab && fullTab.map((data,index)=>(
                   <div className='tab-images'>
                     <img src={fullTab[index]} alt="Image2" />
-                  </div>
+                   </div>
                 ))}
                 
               </div>
