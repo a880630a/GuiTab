@@ -110,7 +110,8 @@
 .right-now{
     width: 100%;
 
-    height: 300px;
+    // height: 300px;
+
     object-fit:cover;
 
     background-image: url('../images/final.jpg');
@@ -118,6 +119,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    h2{
+        margin-top: 2%;
+    }
     .link-to-execute{
         width: 60%;
         margin-top: 10%;
