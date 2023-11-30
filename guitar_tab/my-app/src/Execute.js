@@ -11,6 +11,7 @@ import BackgroundModal from './component/BackgroundModal';
 import io from 'socket.io-client'; 
 
 import './scss/Execute.scss'
+import BackgroundModalError from './component/BackgroundModalError';
 
 
 
@@ -23,17 +24,24 @@ export default function Execute() {
   const [isLoading,setIsLoading] = useState(false);
   const [tabPage,setTabPage] = useState([]);
   const [fullTab,setFullTab] = useState([]);
+  const [error, setError] = useState(null);
 
 
 
   const urlUpdate = async (data) => {
-    // console.log("yturl come in");
-    const Data = await axios.post("/api/yt_url",data);
-    if (Data.status === 200){
-      console.log("yturl",Data.data);
-      setYtTitle(Data.data);
-      getGuitarImage();
+    try{
+      const Data = await axios.post("/api/yt_url",data);
+      if (Data.status === 200){
+        console.log("yturl",Data.data);
+        setYtTitle(Data.data);
+        getGuitarImage();
     }
+    }catch(error){
+      setError('URL異常，影片可能為年齡限制影片');
+      setIsLoading(true);
+    }
+    
+    
   };
   const getGuitarImage = async () => {
     console.log("getGuitarImage ");
@@ -71,8 +79,8 @@ export default function Execute() {
 
 
   const postTabPage = async(data) =>{
-    const Data = await axios.post("/api/tab_select",data);
     try{
+      const Data = await axios.post("/api/tab_select",data);
       if (Data.status === 200) {
         console.log("tab selected");
         for (let i = 0; i < (Data.data).length; i++){
@@ -81,10 +89,9 @@ export default function Execute() {
         }
       }
     }catch(error){
-      console.log("asdfg")
+      setError('吉他譜TAB生成異常');
+      setIsLoading(true);
     }
-    
-   
   };
   // useEffect(() => { #websocket
   //   const socket = io('http://0.0.0.0:8877');  // 连接到后端的 WebSocket 服务器地址
@@ -106,7 +113,15 @@ export default function Execute() {
   return (
         // <div className="main-page-2">
         <div className={`main-page-2 ${tabImageUrl.length !== 0 ? "tab-select":""}`}>
-          {isLoading ? <BackgroundModal isLoading={isLoading}/> : ""}
+          { error ? 
+          <BackgroundModalError 
+          setIsLoading={setIsLoading} 
+          error={error} 
+          setError={setError} 
+          isLoading={isLoading}/> 
+          : 
+          isLoading  ? 
+          <BackgroundModal isLoading={isLoading}/>  : ""}
         {/* <div className={`main-page ${isLoading ? "loading":""}`}> */}
           {/* <div className="data-area"> */}
           <div className={`data-area ${ytTitle.length === 0 ? "before-url" : "after-url"}`}>

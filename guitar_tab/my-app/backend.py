@@ -249,7 +249,7 @@ class Video_calculate:
             text = text[:70]
             text_max = True
 
-        font = ImageFont.truetype("NotoSansTC-VariableFont_wght.ttf",40)
+        font = ImageFont.truetype("NotoSansTC-VariableFont_wght.ttf",30)
         if text_max == False:
             text_width,text_height = draw.textsize(text,font)
             x = (width - text_width) // 2
@@ -278,14 +278,16 @@ class Video_calculate:
         for i in range(len(images)):
             if images[i].shape[1] != width or images[i].shape[0] != height:
                 images[i] = cv2.resize(images[i], (width, height))
-        # if len(images) < 8:
-        #     result_frame = cv2.vconcat(images)
-        #     cv2.imwrite(f'{title}.jpg', result_frame)
-        #     return [result_frame]
-        # else:
-        result_frames = []
-        split_page = len(images)//8
-        result = np.array_split(images,split_page)
+
+
+        if len(images) < 8:
+            result_frame = cv2.vconcat(images)
+            cv2.imwrite(f'{title}.jpg', result_frame)
+            return [result_frame]
+        else:
+            result_frames = []
+            split_page = len(images)//8
+            result = np.array_split(images,split_page)
   
         print("================================")
         print(result[0].shape)
