@@ -92,7 +92,7 @@ GuiTab簡化了從YouTube影片中獲取吉他譜的過程。用戶可以方便�
 使用以下命令clone Guitab 專案：
 
 ```bash
-git clone https://github.com/yourusername/guitab.git
+git clone https://github.com/a880630a/GuiTab.git
 ```
 
 ### **步驟 3: 進入 Guitab 目錄**
