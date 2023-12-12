@@ -1,6 +1,7 @@
 # GuiTab
 
 GuiTab是一個網頁應用程序，根據用戶提供的YouTube影片URL（必須包含吉他譜）自動生成完整的吉他譜。用戶可以輸入YouTube影片URL，選擇所需的譜區域，系統將返回完整的吉他譜。
+這個 GuiTab 專案使用 Docker Compose 來方便地啟動 Guitab 的前後端。
 
 ## **目錄**
 
@@ -48,6 +49,11 @@ GuiTab簡化了從YouTube影片中獲取吉他譜的過程。用戶可以方便�
 - 使用OpenCV進行圖片處理，提取指定的TAB區域。
 - 將圖片轉換為Base64，以便在前端輕松顯示。
 
+### **Docker 部屬**
+
+- 透過 Docker 實現應用程式的容器化部署，確保在不同環境中的一致性。
+- 使用 Docker Compose 簡化多容器應用程式的管理。
+
 ### **圖片處理**
 
 - 使用OpenCV進行圖片處理。
@@ -70,28 +76,58 @@ GuiTab簡化了從YouTube影片中獲取吉他譜的過程。用戶可以方便�
 7. **用戶獲得吉他譜**
     - 用戶成功獲得生成的吉他譜，完成整個流程。
 
-## **入門指南**
+## **使用方法**
 
 要開始使用吉他譜生成器，請按照以下步驟進行：
 
-1. clone存儲庫。
-2. 為前端（React）和後端（Flask）安裝必要的依賴項。
-    
-    **套件及指定版本**
-    
-    - node：20.9.0
-    - python：3.8.10
-    - Pillow：9.5.0
-    - pytube：15.0.0
-    - flask：2.3.2
-    - flask-Cors：3.0.10
-    - opencv-python
-    - matplotlib
-3. 運行前端和後端服務器。
-    - 運行後端 `backend.py` 並執行前端服務。
-    - 連接至 `[localhost:3000](http://localhost:3000)`
-4. 訪問Web應用程序並輸入YouTube影片URL。
+### **步驟 1: 安裝 Docker 和 Docker Compose**
+
+確保你的機器上已經安裝了 Docker 和 Docker Compose。如果沒有，請參考以下鏈接進行安裝：
+
+- [Docker 安裝指南](https://docs.docker.com/get-docker/)
+- [Docker Compose 安裝指南](https://docs.docker.com/compose/install/)
+
+### **步驟 2: 下載 Guitab 專案**
+
+使用以下命令clone Guitab 專案：
+
+```bash
+git clone https://github.com/yourusername/guitab.git
+```
+
+### **步驟 3: 進入 Guitab 目錄**
+
+```bash
+cd guitar_tab
+```
+
+### **步驟 4: 啟動 Docker Compose**
+
+執行以下命令啟動 Docker Compose：
+
+```bash
+docker-compose up -d
+```
+
+### **步驟 5: 查看應用程式**
+
+現在，你的 Guitab 應用程式應該已經運行在:
+
+- 前端: [http://localhost:3000](http://localhost:3000/)
+
+你可以使用網頁瀏覽器訪問上述 URL 來查看應用程式，並輸入YouTube影片URL。
+
+### **步驟 6: 關閉 Docker Compose**
+
+當你完成測試後，可以使用以下命令關閉 Docker Compose：
+
+```bash
+docker-compose down
+```
+
 
 ## **結論**
 
 GuiTab為用戶提供了一種直觀高效的方式，讓他們能夠從YouTube影片中獲取吉他譜。
+
+
