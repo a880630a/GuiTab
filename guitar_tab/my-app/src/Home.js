@@ -27,7 +27,7 @@ export default function Home(){
             <div className="introduce-area">
                 <div data-aos="fade-right" className="i-1">
                     <div className='i-img'>
-                        <img src={image1}/>
+                        <img src={image1} alt='1'/>
                     </div>
                     <div className='i-data'>
                         <h2>熱愛音樂的你</h2>
@@ -35,9 +35,10 @@ export default function Home(){
                     </div>
                 </div>
                 <hr/>
-                <div data-aos="fade-left"  className="i-2">
+                
+                <div data-aos="fade-right" className="i-2">
                     <div className='i-img'>
-                        <img src={image2}/>
+                        <img src={image2} alt='2'/>
                     </div>
                     <div className='i-data'>
                         <h2>智慧應用，簡單使用</h2>
@@ -47,7 +48,7 @@ export default function Home(){
                 <hr/>
                 <div data-aos="fade-right"  className="i-1">
                     <div className='i-img'>
-                        <img src={image3}/>
+                        <img src={image3} alt='3'/>
                     </div>
                     <div className='i-data'>
                         <h2>隨時隨地享受音樂的人</h2>
@@ -55,9 +56,9 @@ export default function Home(){
                     </div>
                 </div>
                 <hr/>
-                <div data-aos="fade-left"  className="i-2">
+                <div data-aos="fade-right" className="i-2">
                     <div className='i-img'>
-                        <img src={image4}/>
+                        <img src={image4} alt='4'/>
                     </div>
                     <div className='i-data'>
                         <h2>學習吉他的新手</h2>
